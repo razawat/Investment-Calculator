@@ -9,14 +9,14 @@ function App() {
   const [investmentValue, setInvestmentValue] = useState([]);
   function collectInvestmentValue(obj) {
     console.log("In App: ", obj);
-    calculateInvestmentResults(obj);
+    //calculateInvestmentResults(obj);
     setInvestmentValue(calculateInvestmentResults(obj));
   }
   return (
     <>
       <Header />
       <UserInput inputValue={collectInvestmentValue} />
-      <ResultTable calculateResult={investmentValue}/>
+      <ResultTable calculateResult={investmentValue} />
     </>
   );
 }

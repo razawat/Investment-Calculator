@@ -16,26 +16,29 @@ const tableHeader = [
 export default function ResultTable({ calculateResult }) {
   return (
     <>
-      <table id="result">
-        <thead>
-          <tr>
-            {tableHeader.map((val, index) => (
-              <th key={index}>{val}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {calculateResult.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              <td>{row.year}</td>
-              <td>{formatter.format(row.valueEndOfYear)}</td>
-              <td>{formatter.format(row.interest)}</td>
-              <td>{formatter.format(row.totalInterest)}</td>
-              <td>{formatter.format(row.totalInvestment)}</td>
+      {calculateResult.length == 0 && <p className="center">Please enter investment data</p>}
+      {calculateResult.length > 0 && (
+        <table id="result">
+          <thead>
+            <tr>
+              {tableHeader.map((val, index) => (
+                <th key={index}>{val}</th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {calculateResult.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                <td>{row.year}</td>
+                <td>{formatter.format(row.valueEndOfYear)}</td>
+                <td>{formatter.format(row.interest)}</td>
+                <td>{formatter.format(row.totalInterest)}</td>
+                <td>{formatter.format(row.totalInvestment)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </>
   );
 }
