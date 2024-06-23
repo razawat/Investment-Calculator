@@ -1,3 +1,5 @@
+import { formatter } from "../util/investment";
+
 const tableHeader = [
   "Year",
   "Investment Value",
@@ -24,12 +26,12 @@ export default function ResultTable({ calculateResult }) {
         </thead>
         <tbody>
           {calculateResult.map((row, rowIndex) => (
-            <tr>
+            <tr key={rowIndex}>
               <td>{row.year}</td>
-              <td>{row.interest}</td>
-              <td>{row.annualInvestment}</td>
-              <td>{row.valueEndOfYear}</td>
-              <td>{row.year}</td>
+              <td>{formatter.format(row.valueEndOfYear)}</td>
+              <td>{formatter.format(row.interest)}</td>
+              <td>{formatter.format(row.totalInterest)}</td>
+              <td>{formatter.format(row.totalInvestment)}</td>
             </tr>
           ))}
         </tbody>
